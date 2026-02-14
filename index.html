@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لحبيبي 💝</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url("bg.jpg") ;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+        }
+        .card {
+            background-image: url("cardbg2.jpg") ;
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        button {
+            background: #ff1493;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 20px;
+            border-radius: 50px;
+            margin: 10px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255,20,147,0.4);
+        }
+        button:hover {
+            background: #ff69b4;
+            transform: scale(1.05);
+        }
+        .heart {
+            font-size: 100px;
+            animation: beat 1s infinite;
+        }
+        @keyframes beat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        img {
+            max-width: 200px;
+            border-radius: 20px;
+            margin: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+        .image-container {
+            position: relative;
+            display: inline-block;
+            cursor: pointer; /* لتوضيح أن الصورة قابلة للنقر */
+        }
+        .kiss-emoji {
+            position: absolute;
+            font-size: 40px;
+            top: -20px;
+            right: -20px;
+            transform: rotate(-15deg);
+        }
+        .heart-emoji {
+            position: absolute;
+            font-size: 30px;
+            bottom: -10px;
+            left: -10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card" id="page1">
+        <h1> 💝صباح الخير عبّودي💝 </h1>
+        <div class="heart">❤️</div>
+        <p>هالموقع مصمم كله الك، تفضل اكبس عالقلب يا قلبي</p>
+        <button onclick="nextPage(2)"> ❤️ </button>
+    </div>
+
+    <div class="card hidden" id="page2">
+        <h1>🎵 أول مفاجأة</h1>
+        <!-- حط رابط الاغنية من يوتيوب هنا -->
+        <p> صورة الشخص الي زيّن حياتي</p>
+        
+        <!-- زر تشغيل الأغنية -->
+        <audio controls src="love.MP3"></audio>
+        
+        <!-- هنا التعديل: حذفنا عنصر <a> وإضافة onclick للصورة مباشرة -->
+        <div class="image-container" onclick="nextPage(3)">
+            <img src="mylove1.jpg" alt="حبيبي" id="boyImage">
+            <span class="kiss-emoji">😘</span>
+            <span class="heart-emoji">❤️</span>
+        </div>
+        <br>
+       
+        
+        <p>اكبس ع الصورة وروح لتعرف سبب حبي الك</p>
+        <br>
+        
+        <!-- لاحظ: تم إزالة العنصر <a> ووسم الصورة المكررة من هنا تماماً -->
+    </div>
+
+    <div class="card hidden" id="page3">
+        <h1>💌 رسالتي الك</h1>
+        <p id="messageText">أنا بحبك لأنك...</p>
+        <button onclick="showReason(1)">أولاً</button>
+        <button onclick="showReason(2)">ثانياً</button>
+        <button onclick="showReason(3)">ثالثاً</button>
+        <div id="reasonDisplay" style="margin: 20px; color: #ff1493; font-size: 24px;"></div>
+        <button onclick="nextPage(4)">وأخيراً</button>
+    </div>
+
+    <div class="card hidden" id="page4">
+        <img src="us.jpg">
+        <h1>💞 أنت قلبي</h1>
+        <div><audio controls src="kiss.mp3"></div>
+        <div style="font-size: 50px;">💝</div>
+        <p style="font-size: 20px;">مهما بعدت المسافات<br>أنت نبض قلبي</p>
+        <button onclick="resetSite()">من الأول</button>
+    </div>
+    
+
+    <script>
+        // JavaScript السهل - فقط عدل عالأرقام
+        function nextPage(pageNumber) {
+            // يخفي كل الصفحات
+            document.getElementById('page1').classList.add('hidden');
+            document.getElementById('page2').classList.add('hidden');
+            document.getElementById('page3').classList.add('hidden');
+            document.getElementById('page4').classList.add('hidden');
+            
+            // يظهر الصفحة المطلوبة
+            document.getElementById('page' + pageNumber).classList.remove('hidden');
+        }
+
+        function showReason(reasonNumber) {
+            let reason = '';
+            
+            // غير هالنصوص
+            if(reasonNumber == 1) {
+                reason = 'لأنك تخلي يومي أحلى 😊';
+            } else if(reasonNumber == 2) {
+                reason = 'لأنك مهما صار بتفهمني 💕';
+            } else if(reasonNumber == 3) {
+                reason = 'لأنك انت بتكوينك مميز 💘';
+            }
+            
+            document.getElementById('reasonDisplay').innerHTML = reason;
+        }
+
+        function resetSite() {
+            nextPage(1);
+        }
+
+        // تشغيل الاغنية (اختياري)
+        function playMusic() {
+            // هون حط كود تشغيل الاغنية اذا بدك
+        }
+    </script>
+</body>
+</html>
